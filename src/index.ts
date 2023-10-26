@@ -4,6 +4,7 @@ app.use(express.json())
 //Tenho que ter uma rota post para cadastrar um filme
 app.post('/filmes',(req,res)=>{
     const filme = {
+        id:1,
         titulo:'Vingadores',
         descricao:'Filme dos herois da marvel',
         imagem:"https://live.staticflickr.com/7270/6976087418_59719341f5_b.jpg"
