@@ -6,13 +6,15 @@ describe('BancoMongoDB teste', () => {
         const bancoMongoDB = new BancoMongoDB()
         expect(bancoMongoDB).toBeDefined()
     })
-    test('deve salvar um filme', () => {
+    test('deve salvar um filme', async () => {
         const bancoMongoDB = new BancoMongoDB()
         const filme = {
             id: '1',
             titulo: 'O Poderoso Chefão',
             descricao: 'Filme de máfia',
-            foto: 'fotofilme.jpg'
+            imagem: 'fotofilme.jpg'
         }
+        const result = await bancoMongoDB.salvar(filme)
+        expect(result).toBe(true)
     })
 })
