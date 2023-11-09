@@ -9,7 +9,7 @@ describe('BancoMongoDB teste', () => {
     test('deve salvar um filme', async () => {
         const bancoMongoDB = new BancoMongoDB()
         const filme = {
-            id: '1',
+            id: 1,
             titulo: 'O Poderoso Chefão',
             descricao: 'Filme de máfia',
             imagem: 'fotofilme.jpg'
