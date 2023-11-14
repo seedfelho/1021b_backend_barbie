@@ -1,7 +1,6 @@
 import { describe, expect, test,beforeEach } from "vitest";
 import ListaFilme from "./lista-filme.use-case";
 import BancoEmMemoria from "../infra/banco/banco-em-memoria";
-import { b } from "vitest/dist/reporters-5f784f42";
 describe("ListaFilme", () => {
     const bancoEmMemoria = new BancoEmMemoria();
 
@@ -25,5 +24,18 @@ describe("ListaFilme", () => {
         const listaFilme = new ListaFilme(bancoEmMemoria);
         const filmes = await listaFilme.executar();
         expect(filmes.length).toBe(2);
+        expect(filmes[0].id).toBe(1);
+        expect(filmes[0]).toEqual({
+            id: 1,
+            titulo: "O Poderoso Chefão",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        });
+        expect(filmes[1]).toEqual({
+            id: 2,
+            titulo: "O Poderoso Chefão 2",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        });
     });
 })
