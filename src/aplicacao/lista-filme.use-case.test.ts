@@ -1,8 +1,26 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test,beforeEach } from "vitest";
 import ListaFilme from "./lista-filme.use-case";
 import BancoEmMemoria from "../infra/banco/banco-em-memoria";
+import { b } from "vitest/dist/reporters-5f784f42";
 describe("ListaFilme", () => {
     const bancoEmMemoria = new BancoEmMemoria();
+
+    beforeEach(async () => {
+        bancoEmMemoria.filmes = [{
+            id: 1,
+            titulo: "O Poderoso Chefão",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        },
+        {
+            id: 2,
+            titulo: "O Poderoso Chefão 2",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        
+        }]
+    });
+
     test("deve retornar uma lista de filmes", async () => {
         const listaFilme = new ListaFilme(bancoEmMemoria);
         const filmes = await listaFilme.executar();
