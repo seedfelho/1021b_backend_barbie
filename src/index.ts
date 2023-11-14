@@ -11,6 +11,11 @@ type Filme = {
     imagem:string
 }
 let filmesCadastros:Filme[] = []
+
+app.get('/filmes',(req,res)=>{
+    //usem o listarFilme Usecase para listar os filmes
+    res.send("Devolver os filmes")
+})
 app.post('/filmes',(req,res)=>{
     const {id,titulo,descricao,imagem} = req.body
     const filme = {
@@ -22,9 +27,6 @@ app.post('/filmes',(req,res)=>{
     //Como eu salvo o filme que foi cadastrado no meu vetor de filmes (Banco de dados)
     filmesCadastros.push(filme)
     res.status(201).send(filme)
-})
-app.get('/filmes',(req,res)=>{
-    res.send("Filmes Listados com sucesso")
 })
 
 app.get('/filmes/:id',(req,res)=>{
